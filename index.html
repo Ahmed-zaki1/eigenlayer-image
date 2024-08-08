@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chutiya Ahead</title>
+    <style>
+        body {
+            overflow: hidden;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .floating-text {
+            position: absolute;
+            font-size: 50px;
+            font-weight: bold;
+            color: red;
+            white-space: nowrap;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const text = document.createElement('div');
+            text.className = 'floating-text';
+            text.textContent = 'Chutiya Ahead';
+            document.body.appendChild(text);
+
+            let x = 0;
+            let y = 0;
+            let dx = 2;
+            let dy = 2;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            function animate() {
+                x += dx;
+                y += dy;
+                
+                if (x + text.offsetWidth > width || x < 0) dx *= -1;
+                if (y + text.offsetHeight > height || y < 0) dy *= -1;
+
+                text.style.transform = `translate(${x}px, ${y}px)`;
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
